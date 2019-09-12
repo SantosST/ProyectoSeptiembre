@@ -4,6 +4,8 @@ package com.example.proyectoseptiembre;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -55,12 +57,16 @@ public class navegacion extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText( " Busqueda de profesores");
+                    mTextMessage.setText("Busqueda de profesores");
                     BuscarProfesores();
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
                     Not();
+                    return true;
+                case R.id.navigation_perfil:
+                    mTextMessage.setText("Perfil");
+                    IrAPerfil();
                     return true;
             }
             return false;
@@ -102,6 +108,16 @@ public class navegacion extends AppCompatActivity {
         Materias.setAdapter(adapter);
         Adaptadorcito = new Adaptador(getApplicationContext(),ListaAlmacenarProfesores);
 
+    }
+
+    public void IrAPerfil(){
+        FragmentManager adminFragment;
+        FragmentTransaction transacFragment;
+        PerfilFragment elFragmentPerfil= new PerfilFragment();
+        adminFragment = getFragmentManager();
+        transacFragment = adminFragment.beginTransaction();
+        transacFragment.replace(R.id.navigation, elFragmentPerfil);
+        transacFragment.commit();
     }
     private void SetearListener() {
         btnTraerLista.setOnClickListener(btnTraer_Click);

@@ -414,7 +414,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             protected Void doInBackground(JSONObject... parametros) {
 
-                String strHOST = "http://10.0.2.2:80/validar_usuario";
+                String strHOST = "http://10.0.2.2:80?FuncionAutilizar=profesores";
 
 
                 JSONObject data = parametros[0];
